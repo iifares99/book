@@ -2,7 +2,7 @@
 FROM maven:3.8.3-openjdk-17
 
 
-#Set the working directory in the container
+#Set the working directory in the
 WORKDIR /app
 
 #Copy the Maven build files and project source code to the container
