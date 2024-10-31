@@ -39,7 +39,7 @@ pipeline {
 
                     // Stop and remove the old container if it exists
                     sh """
-                        if [ $(docker ps -q -f name=${containerName}) ]; then
+                        if [ \$(docker ps -q -f name=${containerName}) ]; then
                             docker stop ${containerName}
                             docker rm ${containerName}
                         fi
@@ -48,8 +48,8 @@ pipeline {
                     // Build a new Docker image
                     sh "docker build -t ${imageName} ."
 
-                    // Run a new container from the latest image
-                    sh "docker run -d --name ${containerName} -p 8081:8081 ${imageName}"
+                    // Run a new container from the latest image on port 8080
+                    sh "docker run -d --name ${containerName} -p 8080:8080 ${imageName}"
                 }
             }
         }
